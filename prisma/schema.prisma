@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Report {
+  id             Int        @id @default(autoincrement())
+  severity       Severity
+  status         Status
+  type           ReportType
+  project        Project    @relation(fields: [projectId], references: [id])
+  projectId      Int
+  hacker         WhiteHat   @relation(fields: [whiteHatId], references: [id])
+  whiteHatId     Int
+  submissionDate DateTime   @default(now())
+}
+
+model WhiteHat {
+  id        Int      @id @default(autoincrement())
+  username  String
+  email     String
+  reports   Report[]
+  project   Project  @relation(fields: [projectId], references: [id])
+  projectId Int
+}
+
+model Project {
+  id        Int        @id @default(autoincrement())
+  name      String
+  reports   Report[]
+  whiteHats WhiteHat[]
+}
+
+enum Severity {
+  Critical
+  High
+  Medium
+  Low
+  None
+}
+
+enum Status {
+  Reported
+  Escalated
+  Confirmed
+  Paid
+  Closed
+}
+
+enum ReportType {
+  Blockchain
+  SmartContract      @map("Smart Contract")
+  WebsiteApplication @map("Website Application")
+}

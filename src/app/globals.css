@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-rubik);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  /* light */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 216 14% 14%;
+
+    --card: 220 23% 97%;
+    --card-foreground: 216 14% 14%;
+    --popover: 220 23% 97%;
+    --popover-foreground: 216 14% 14%;
+
+    --muted: 216 13% 92%;
+    --muted-foreground: 216 14% 14%;
+    --accent: 216 19% 92%;
+    --accent-foreground: 216 14% 16%;
+
+    --primary: 11 97% 72%;
+    --primary-foreground: 10 86% 97%;
+    --secondary: 212 93% 44%;
+    --secondary-foreground: 136 65% 97%;
+
+    --destructive: 0 100% 57%;
+    --destructive-foreground: 0 100% 97%;
+    --success: 169 75% 40%;
+    --success-foreground: 162 76% 97%;
+    --warning: 32 88% 50%;
+    --warning-foreground: 42 100% 96%;
+
+    --chart-primary: 239 84% 67%;
+    --chart-secondary: 13 86% 53%;
+    --chart-accent: 330 81% 60%;
+
+    --border: 212 16% 85%;
+    --input: 212 16% 85%;
+    --ring: 11 97% 72%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 215 15% 16%;
+    --foreground: 211 18% 73%;
+
+    --card: 215 18% 13%;
+    --card-foreground: 211 27% 82%;
+    --popover: 214 13% 20%;
+    --popover-foreground: 211 27% 82%;
+
+    --muted: 214 12% 25%;
+    --muted-foreground: 211 27% 82%;
+    --accent: 214 14% 25%;
+    --accent-foreground: 211 32% 85%;
+
+    --primary: 214 77% 59%;
+    --primary-foreground: 226 53% 21%;
+    --secondary: 12 79% 64%;
+    --secondary-foreground: 11 75% 15%;
+
+    --destructive: 0 100% 67%;
+    --destructive-foreground: 0 100% 16%;
+    --success: 167 73% 60%;
+    --success-foreground: 174 80% 10%;
+    --warning: 37 92% 55%;
+    --warning-foreground: 15 89% 14%;
+
+    --chart-primary: 238 89% 74%;
+    --chart-secondary: 15 87% 58%;
+    --chart-accent: 330 86% 70%;
+
+    --border: 215 11% 30%;
+    --input: 215 11% 30%;
+    --ring: 214 77% 59%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .screen-full {
+    @apply h-screen w-screen;
+  }
+  .ping {
+    @apply rounded-md border border-red-600/50 bg-red-600/5 shadow;
+  }
+  .center {
+    @apply flex items-center justify-center;
+  }
+  .between {
+    @apply flex items-center justify-between;
+  }
+}
