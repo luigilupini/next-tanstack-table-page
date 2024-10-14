@@ -1,37 +1,57 @@
+# Next Tanstack Table App
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/luigilupini/next-tanstack-table-page.git
+cd next-tanstack-table-page
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Setup Prisma
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project uses Prisma as the ORM for database management. To get started with Prisma: Make sure your .env file contains the correct database URL under the DATABASE_URL key DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This URL should point to your PostgreSQL database instance.
 
-## Learn More
+Example .env file:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+DATABASE_URL="*********"
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=6VQYUJT4EUhKPjiga76dJdJd1GBQKjvoIg3ziF3ngHQ=
+GOOGLE_CLIENT_ID="*********"
+GOOGLE_CLIENT_SECRET="*********"
+API_KEY=mypreciouskeyhere
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Run Migrations & Seed Db
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Once you have set up your .env file, run the following Prisma commands to generate the necessary migrations and synchronize your schema: `npx prisma migrate dev`
 
-## Deploy on Vercel
+Under the prisma folder you will find a seeding file. Run: `node prisma/seed.ts` to seed the db.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 4. Setup Google Provider for NextAuth.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# next-table-app
+This project uses NextAuth.js for authentication with Google as a provider. You need to set up a Google provider in order to authenticate users.
+
+1. Create a Google Cloud Project- Go to the Google Cloud Console and create a new project.
+2. Enable OAuth 2.0 - In the APIs & Services section, go to Credentials and click Create Credentials > OAuth 2.0 Client IDs. Set the application type to Web application, and enter the following URIs: Authorized redirect URIs: `http://localhost:3000/api/auth/callback/google`
+3. Obtain Client ID and Client Secret - Once created, you will receive a Client ID and Client Secret.
+4. Update the .env file - Add the Google client credentials to your .env file:
+
+Example .env file:
+
+```bash
+DATABASE_URL="*********"
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=6VQYUJT4EUhKPjiga76dJdJd1GBQKjvoIg3ziF3ngHQ=
+GOOGLE_CLIENT_ID="*********"
+GOOGLE_CLIENT_SECRET="*********"
+API_KEY=mypreciouskeyhere
+```
+
+For additional information see [`NextAuth.js Google Provider Documentation`](https://next-auth.js.org/providers/google).
