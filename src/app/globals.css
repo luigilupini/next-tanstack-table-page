@@ -42,9 +42,9 @@ body {
     --warning: 32 88% 50%;
     --warning-foreground: 42 100% 96%;
 
-    --chart-primary: 239 84% 67%;
-    --chart-secondary: 13 86% 53%;
-    --chart-accent: 330 81% 60%;
+    --chart-1: 239 84% 67%;
+    --chart-2: 13 86% 53%;
+    --chart-3: 330 81% 60%;
 
     --border: 212 16% 85%;
     --input: 212 16% 85%;
@@ -78,9 +78,9 @@ body {
     --warning: 37 92% 55%;
     --warning-foreground: 15 89% 14%;
 
-    --chart-primary: 238 89% 74%;
-    --chart-secondary: 15 87% 58%;
-    --chart-accent: 330 86% 70%;
+    --chart-1: 238 89% 74%;
+    --chart-2: 15 87% 58%;
+    --chart-3: 330 86% 70%;
 
     --border: 215 11% 30%;
     --input: 215 11% 30%;

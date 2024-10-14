@@ -5,7 +5,7 @@ import { TableSkeleton } from '@/components/skeletons';
 
 export default async function Home() {
   return (
-    <main className='flex flex-col flex-1 mx-3 p-1 gap-4 min-w-[800px]'>
+    <main className='flex flex-col flex-1 mx-3 p-1 gap-1 min-w-[800px]'>
       <Suspense fallback={<TableSkeleton />}>
         <Reports />
       </Suspense>

@@ -18,8 +18,6 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   if (session?.user) {
-    // Look into https://react.dev/reference/react/experimental_taintObjectReference
-    // filter out sensitive data before passing to client.
     session.user = {
       name: session.user.name,
       email: session.user.email,

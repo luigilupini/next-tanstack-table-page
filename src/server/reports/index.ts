@@ -11,11 +11,11 @@ export interface ReportWithRelations extends Report {
 export const getReports = async (
   apiKey: string
 ): Promise<ReportWithRelations[]> => {
-  // const expectedApiKey = process.env.API_KEY;
+  const expectedApiKey = process.env.API_KEY;
 
-  // if (!apiKey || apiKey !== expectedApiKey) {
-  //   throw new Error('Unauthorized: Invalid API key');
-  // }
+  if (apiKey !== expectedApiKey) {
+    throw new Error('Unauthorized: Invalid API key');
+  }
 
   try {
     const reports = await db.report.findMany({
